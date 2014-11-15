@@ -5,10 +5,10 @@ FROM rails:onbuild
 
 # Install nginx, nodejs and curl
 RUN apt-get update -q
-RUN apt-get install -qy nginx
-RUN apt-get install -qy curl
-RUN apt-get install -qy nodejs
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+#RUN apt-get install -qy nginx
+#RUN apt-get install -qy curl
+#RUN apt-get install -qy nodejs
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Install rvm, ruby, bundler
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3 BF04FF17
@@ -18,9 +18,9 @@ RUN /bin/bash -l -c "rvm install 2.1.0"
 RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
 
 # Add configuration files in repository to filesystem
-ADD config/container/nginx-sites.conf /etc/nginx/sites-enabled/default
-ADD config/container/start-server.sh /usr/bin/start-server
-RUN chmod +x /usr/bin/start-server
+#ADD config/container/nginx-sites.conf /etc/nginx/sites-enabled/default
+#ADD config/container/start-server.sh /usr/bin/start-server
+#RUN chmod +x /usr/bin/start-server
 
 # Add rails project to project directory
 ADD ./ /rails
@@ -35,4 +35,4 @@ RUN /bin/bash -l -c "bundle install"
 EXPOSE 80
 
 # Startup commands
-ENTRYPOINT /usr/bin/start-server
+#ENTRYPOINT /usr/bin/start-server

@@ -1,0 +1,15 @@
+
+Docker Commands
+
+-----
+
+* docker ps
+* docker kill <id>
+* /srv/myapp docker build .
+* docker run -i -t dockertest /bin/bash ( interactive shell )
+* docker run -p 3000:3000 dockertest/nginx ( runs it )
+* docker inspect -f="{{.NetworkSettings.IPAddress}}" <id> ( get the ip of the docker container >
+
+
+* add to docker file ( RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3 BF04FF17 )
+* for fixing rvm issue on install

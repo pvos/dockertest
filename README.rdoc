@@ -1,15 +1,50 @@
+Docker test repo 
+-----
+Testing docker containers for easy app deployments
+
 
 Docker Commands
-
 -----
 
-* docker ps
-* docker kill <id>
+* boot2docker up ( start vmware )
+* boot2docker ssh ( get into the vmware )
+* docker ps ( list running )
+* docker images ( list images )
+* docker stop/kill <id>
 * /srv/myapp docker build .
-* docker run -i -t dockertest /bin/bash ( interactive shell )
-* docker run -p 3000:3000 dockertest/nginx ( runs it )
-* docker inspect -f="{{.NetworkSettings.IPAddress}}" <id> ( get the ip of the docker container >
+* docker run -i -t dockertest /bin/bash                     ( interactive shell )
+* docker run -p 3000:3000 dockertest                        ( runs it )
+* then http://dockerhost:3000 or http://dockerhost:8000 for laravel
+* docker info
+* docker inspect -f="{{.NetworkSettings.IPAddress}}" <id>   ( get the ip of the docker container >
 
 
+Get inside container
+----
+* boot2docker up
+* boot2docker ssh
+* step1) docker run -d -P --name web <container_name>		( start container )
+* step2) sudo docker-enter web 					            ( get inside)
+* sudo docker-enter web ps -A
+* check on logged in container:
+% hostname
+% apt-get update
+% apt-get install -y procps	                                ( install ps )
+% ps -A                                                     ( check if php/ruby process is running )
+
+
+Laravel specific
+-----
+* None
+
+
+Rails specific
+-----
 * add to docker file ( RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3 BF04FF17 )
-* for fixing rvm issue on install
+  for rails fixing rvm issue on install
+
+
+Reference
+----
+* http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide
+* http://kitematic.com/ ( osx docker helper tool )
